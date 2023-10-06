@@ -1,0 +1,27 @@
+# .github/workflows/test.yml
+
+name: Testes Automatizados
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v2
+
+      - name: Configurar ambiente
+        run: |
+          docker build -t my-python-project .
+        # Substitua por comandos relevantes para configuração do ambiente.
+
+      - name: Executar testes
+        run: |
+          docker run my-python-project pytest
+        # Substitua comandos para execução dos testes.
+
